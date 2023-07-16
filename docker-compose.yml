@@ -1,0 +1,20 @@
+version: "2"
+services:
+  db:
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "8534:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gtplah_dev
+  test_db:
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "8535:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: gtplah_test

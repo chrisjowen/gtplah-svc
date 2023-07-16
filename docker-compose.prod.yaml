@@ -1,0 +1,27 @@
+version: "2"
+services:
+  db:
+    image: postgis/postgis
+    restart: always
+    ports:
+      - "5432:5432"
+    environment:
+      POSTGRES_USER: lfg_user
+      POSTGRES_PASSWORD: tempjunkpassword
+      POSTGRES_DB: lfg
+  api:
+    image: lfg_backend:latest
+    environment:
+      SECRET_KEY_BASE: MX11KilcctSq0yUNvd+LrcIoWRNXFE8esukRVcsNUwDkFv/Ovtav0Tn5gtZKxm2z
+    ports:
+      - 4489:4000
+    restart: always
+  web:
+    image: lfg:latest
+    environment:
+      PORT: "8080"
+    ports:
+      - 4490:8080
+    restart: always
+
+  
