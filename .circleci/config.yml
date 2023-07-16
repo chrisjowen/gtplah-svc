@@ -29,12 +29,12 @@ jobs:
       - run:
           name: Build application Docker image
           command: |
-            docker build --build-arg OPEN_AI_KEY=${OPEN_AI_KEY} --build-arg SCREENSHOT_API_KEY=${SCREENSHOT_API_KEY}  --cache-from=app -t chrisjowen/problem_svc:latest .
+            docker build --build-arg OPEN_AI_KEY=${OPEN_AI_KEY} --build-arg SCREENSHOT_API_KEY=${SCREENSHOT_API_KEY}  --cache-from=app -t chrisjowen/chat_svc:latest .
       - run:
           name: Save Docker image layer cache
           command: |
             mkdir -p /caches
-            docker save -o /caches/app.tar chrisjowen/problem_svc
+            docker save -o /caches/app.tar chrisjowen/chat_svc
       - save_cache:
           key: v1-{{ .Branch }}-{{ epoch }}
           paths:
@@ -43,6 +43,6 @@ jobs:
           name: Publish Docker Image to Docker Hub
           command: |
             docker login -u chrisjowen -p "$DOCKERHUB_PASSWORD"
-            docker push chrisjowen/problem_svc:latest
+            docker push chrisjowen/chat_svc:latest
             
       
