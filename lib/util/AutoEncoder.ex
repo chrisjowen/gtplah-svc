@@ -5,7 +5,7 @@ defmodule Modules do
     {GtpLah.Schema.Message, []},
     {GtpLah.Schema.MessageLink, []},
     {GtpLah.Schema.Link, []},
-    {GtpLah.Schema.Note, []},
+    {GtpLah.Schema.Feedback, []},
     {GtpLah.Schema.UserIntegration, []},
     {Scrivener.Page, []},
     {GtpLah.Schema.User, [:password, :clear_password, :salt]}

@@ -35,6 +35,8 @@ defmodule GtpLah.Web.Router do
     # Unsecured
     post("/login", LoginController, :login)
     post("/register", LoginController, :register)
+    resources("/feedback", FeedbackController, only: @read_write_routes)
+
 
   end
 
