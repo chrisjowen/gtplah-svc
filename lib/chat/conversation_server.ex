@@ -36,6 +36,9 @@ defmodule GtpLah.ConversationServer do
         %{"function_call" => function_call} ->
           handle_function_call(pid, function_call)
       end
+    else
+      {:error, reason} ->
+        {:error, reason}
     end
   end
 
@@ -62,7 +65,8 @@ defmodule GtpLah.ConversationServer do
          content: Jason.encode!(content)
        }}
     )
-    {:ok, summary } = send_message(pid, "provide short summary of results")
+
+    {:ok, summary} = send_message(pid, "provide short summary of results")
 
     {:ok, %{function: name, results: content, content: summary.content}}
   end

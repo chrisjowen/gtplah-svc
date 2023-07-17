@@ -28,9 +28,16 @@ defmodule GtpLah.UserChannel do
   def handle_in("message:client:send", payload, socket) do
     pid = socket.assigns[:conversation]
 
-    with {:ok, response} = ConversationServer.send_message(pid, payload["message"]) do
-      broadcast!(socket, "message:server:send", response)
+    try do
+      with {:ok, response} = ConversationServer.send_message(pid, payload["message"]) do
+        broadcast!(socket, "message:server:send", response)
+      else
+        {:error, error} ->  broadcast!(socket, "message:server:send", %{content: "Sorry, I had a problem responding to you. Auntie old you know. Please retry"})
+      end
+    rescue
+      _ -> broadcast!(socket, "message:server:send", %{content: "Sorry, I had a problem responding to you. Auntie old you know. Please retry"})
     end
+
 
     {:noreply, socket}
   end
