@@ -56,7 +56,7 @@ config :ueberauth, Ueberauth.Strategy.Facebook.OAuth,
 
 config :cors_plug,
   origin: [
-    "https://chat.crowdsolve.ai/"
+    "http://chat.chrisjowen.net"
   ],
   max_age: 86400,
   methods: ["GET", "POST", "DELETE", "PUT", "OPTIONS", "HEAD"]
