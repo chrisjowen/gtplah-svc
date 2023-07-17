@@ -14,7 +14,7 @@ defmodule GtpLah.UserChannel do
           {:ok, pid} = ConversationServer.start_link(user_id)
           pid
 
-        [pid, _] ->
+        [{pid, _}] ->
           pid
       end
 
