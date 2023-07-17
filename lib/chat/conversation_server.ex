@@ -23,8 +23,8 @@ defmodule GtpLah.ConversationServer do
            OpenAI.chat_completion(
              model: "gpt-3.5-turbo",
              messages: generate_messages(messages),
-             temperature: 0.4,
-             functions: FunctionHandler.definitions()
+             temperature: 0.4
+            #  functions: FunctionHandler.definitions()
            ) do
       [choice | _] = response.choices
 
